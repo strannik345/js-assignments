@@ -22,7 +22,7 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
-    throw new Error('Not implemented');
+    return value1+value2;
 }
 
 
@@ -38,7 +38,7 @@ function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 function getStringLength(value) {
-    throw new Error('Not implemented');
+    return value.length;
 }
 
 /**
@@ -55,7 +55,7 @@ function getStringLength(value) {
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
-    throw new Error('Not implemented');
+    return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -69,7 +69,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-    throw new Error('Not implemented');
+    return value.slice(7, value.length-1);
 }
 
 
@@ -84,7 +84,7 @@ function extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 function getFirstChar(value) {
-    throw new Error('Not implemented');
+    return value[0];
 }
 
 /**
@@ -99,7 +99,7 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-    throw new Error('Not implemented');
+    return value.trim();
 }
 
 /**
@@ -114,7 +114,9 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 function repeatString(value, count) {
-    throw new Error('Not implemented');
+    let arr=[];
+    arr.length=count;
+    return arr.fill(value).join('');
 }
 
 /**
@@ -130,7 +132,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-    throw new Error('Not implemented');
+    return str.replace(RegExp('('+value+')'),'');
 }
 
 /**
@@ -145,7 +147,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-    throw new Error('Not implemented');
+    return str.substr(1,str.length-2);
 }
 
 
@@ -160,7 +162,7 @@ function unbracketTag(str) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-    throw new Error('Not implemented');
+    return str.toUpperCase();
 }
 
 /**
@@ -174,7 +176,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    throw new Error('Not implemented');
+    return str.split(';');
 }
 
 /**
@@ -185,7 +187,7 @@ function extractEmails(str) {
  * @param {number} height
  * @return {string}
  *
- * @example
+ * @example  
  *
  *            '┌────┐\n'+
  *  (6,4) =>  '│    │\n'+
@@ -201,7 +203,28 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-    throw new Error('Not implemented');
+    let left_top='┌';
+    let left_bottom='└';
+    let right_top='┐';
+    let right_bottom='┘';
+    let vertical='│';
+    let horizontal='─';
+    let str=left_top;
+    for(let i=0;i<height;i++)
+    {
+        if(i!=0 && i!=height-1) str += vertical;
+        if(i==height-1) str += left_bottom;
+        for(let j=1;j<width-1;j++)
+        {
+            if(i==0 || i==height-1) str += horizontal;
+            else str += ' '
+        }
+        if(i==0) str += right_top;
+        else if(i==height-1) str += right_bottom;
+        else str += vertical;
+        str += '\n'
+    }
+    return str;
 }
 
 
@@ -221,7 +244,16 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    throw new Error('Not implemented');
+    let new_str='';
+    for(let i in str)
+    {        
+        if(str[i].charCodeAt()>64 && str[i].charCodeAt()<78) new_str += String.fromCharCode(str[i].charCodeAt()+13);
+        else if(str[i].charCodeAt()>77 && str[i].charCodeAt()<91) new_str += String.fromCharCode(str[i].charCodeAt()-13);
+        else if(str[i].charCodeAt()>96 && str[i].charCodeAt()<110) new_str += String.fromCharCode(str[i].charCodeAt()+13);
+        else if(str[i].charCodeAt()>109 && str[i].charCodeAt()<123) new_str += String.fromCharCode(str[i].charCodeAt()-13);
+        else new_str += str[i];
+    }
+    return new_str;
 }
 
 /**
@@ -238,7 +270,8 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+    if(value===undefined || value === null) return false;
+    return value.__proto__.hasOwnProperty('toLowerCase');    
 }
 
 
@@ -267,7 +300,112 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    throw new Error('Not implemented');
+    switch(value){
+        case 'A♣':
+            return 0;
+        case '2♣':
+            return 1;
+        case '3♣':
+            return 2;
+        case '4♣':
+            return 3;
+        case '5♣':
+            return 4;
+        case '6♣':
+            return 5;
+        case '7♣':
+            return 6;
+        case '8♣':
+            return 7;
+        case '9♣':
+            return 8;
+        case '10♣':
+            return 9;
+        case 'J♣':
+            return 10;
+        case 'Q♣':
+            return 11;
+        case 'K♣':
+            return 12;
+        case 'A♦':
+            return 13;
+        case '2♦':
+            return 14;
+        case '3♦':
+            return 15;
+        case '4♦':
+            return 16;
+        case '5♦':
+            return 17;
+        case '6♦':
+            return 18;
+        case '7♦':
+            return 19;
+        case '8♦':
+            return 20;
+        case '9♦':
+            return 21;
+        case '10♦':
+            return 22;
+        case 'J♦':
+            return 23;
+        case 'Q♦':
+            return 24;
+        case 'K♦':
+            return 25;
+        case 'A♥':
+            return 26;
+        case '2♥':
+            return 27;
+        case '3♥':
+            return 28;
+        case '4♥':
+            return 29;
+        case '5♥':
+            return 30;
+        case '6♥':
+            return 31;
+        case '7♥':
+            return 32;
+        case '8♥':
+            return 33;
+        case '9♥':
+            return 34;
+        case '10♥':
+            return 35;
+        case 'J♥':
+            return 36;
+        case 'Q♥':
+            return 37;
+        case 'K♥':
+            return 38;
+        case 'A♠':
+            return 39;
+        case '2♠':
+            return 40;
+        case '3♠':
+            return 41;
+        case '4♠':
+            return 42;
+        case '5♠':
+            return 43;
+        case '6♠':
+            return 44;
+        case '7♠':
+            return 45;
+        case '8♠':
+            return 46;
+        case '9♠':
+            return 47;
+        case '10♠':
+            return 48;
+        case 'J♠':
+            return 49;
+        case 'Q♠':
+            return 50;
+        case 'K♠':
+            return 51;
+    }
 }
 
 
