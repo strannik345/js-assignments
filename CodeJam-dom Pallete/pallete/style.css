@@ -1,0 +1,114 @@
+*{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+}
+
+header{
+  width: 100%;
+  height: 50px;
+  background-color: aquamarine;
+}
+
+.tools{
+  width: 228px;
+  height: 246px;
+  grid-area: t;
+  border: 1px solid black;
+}
+
+.tools li{
+  display: flex;
+  flex-direction: row;
+}
+.tools li:hover{
+  cursor: pointer;
+  background-color: rgba(126, 215, 208, 0.5)
+}
+
+.choosen{
+  background-color: red;
+}
+
+.tools p {
+  text-align: center;
+}
+
+.colors{
+  width: 228px;
+  height: 246px;
+  grid-area: c;
+  border: 1px solid black;
+}
+
+.colors li{
+  display: flex;
+  flex-direction: row;
+}
+.colors li:hover{
+  cursor: pointer;
+  background-color: rgba(126, 215, 208, 0.5)
+}
+
+#current-color{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin: 5px;
+  background-color: gray;
+}
+
+#prev-color{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin: 5px;
+  background-color: green;
+}
+
+#red{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin: 5px;
+  background-color: red;
+}
+
+#blue{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin: 5px;
+  background-color: blue;
+}
+
+.figures{
+  width: 725px;
+  height: 731px;
+  grid-area: f;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 8px;
+}
+
+main{
+  width: 100%;
+  height: calc(100vh - 50px);
+  display: grid;
+  grid-template-areas: "t f"
+                        "c f";
+}
+
+.figures div{
+  background-color: gray;
+  width: 100%;
+  height: 100%;
+}
+
+#first{
+  border-radius: 50%;
+}
